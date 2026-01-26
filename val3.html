@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nosa's Gallery of Memories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b2b",
+                        "gold": "#D4AF37",
+                        "background-dark": "#1a0202",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                        "script": ["Great Vibes", "cursive"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .stardust-bg {
+            background: radial-gradient(circle at center, #2d0505 0%, #120101 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .luxury-text {
+            text-shadow: 0px 4px 15px rgba(238, 43, 43, 0.3);
+        }
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+        .gallery-frame {
+            @apply relative overflow-hidden transition-all duration-700 ease-out;
+        }
+        .gallery-frame:hover .caption-overlay {
+            @apply opacity-100 translate-y-0;
+        }
+        .gallery-frame:hover img  { 
+            @apply scale-110;
+        }
+        .petal {
+            position: absolute;
+            background: linear-gradient(to bottom right, #ee2b2b, #8b0000);
+            border-radius: 150% 0 150% 0;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+            pointer-events: none;
+            z-index: 1;
+            animation: fall 15s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) translateX(100px) rotate(720deg); opacity: 0; }
+        }
+        .petal:nth-child(1) { left: 5%; width: 15px; height: 15px; animation-duration: 12s; animation-delay: -2s; }
+        .petal:nth-child(2) { left: 15%; width: 22px; height: 22px; animation-duration: 15s; animation-delay: -5s; }
+        .petal:nth-child(3) { left: 25%; width: 12px; height: 12px; animation-duration: 10s; animation-delay: -1s; }
+        .petal:nth-child(4) { left: 35%; width: 18px; height: 18px; animation-duration: 18s; animation-delay: -7s; }
+        .petal:nth-child(5) { left: 45%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: -3s; }
+        .petal:nth-child(6) { left: 55%; width: 14px; height: 14px; animation-duration: 11s; animation-delay: -8s; }
+        .petal:nth-child(7) { left: 65%; width: 20px; height: 20px; animation-duration: 16s; animation-delay: -4s; }
+        .petal:nth-child(8) { left: 75%; width: 16px; height: 16px; animation-duration: 13s; animation-delay: -6s; }
+        .petal:nth-child(9) { left: 85%; width: 24px; height: 24px; animation-duration: 19s; animation-delay: -2s; }
+        .petal:nth-child(10) { left: 95%; width: 13px; height: 13px; animation-duration: 11s; animation-delay: -9s; }
+        .petal:nth-child(11) { left: 10%; width: 19px; height: 19px; animation-duration: 14s; animation-delay: -11s; }
+        .petal:nth-child(12) { left: 20%; width: 11px; height: 11px; animation-duration: 9s; animation-delay: -4s; }
+        .petal:nth-child(13) { left: 40%; width: 26px; height: 26px; animation-duration: 20s; animation-delay: -12s; }
+        .petal:nth-child(14) { left: 60%; width: 17px; height: 17px; animation-duration: 15s; animation-delay: -1s; }
+        .petal:nth-child(15) { left: 80%; width: 21px; height: 21px; animation-duration: 17s; animation-delay: -8s; }
+        .blurred-heart {
+            position: absolute;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(8px);
+            font-size: 200px;
+            line-height: 1;
+            color: #ee2b2b;
+        }
+    </style>
+</head>
+<body class="text-white bg-background-dark font-display">
+<script>
+// Play/Pause video based on pointer hover
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('.gallery-video');
+    videos.forEach(video => {
+        video.addEventListener('mouseenter', () => {
+            video.play();
+        });
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+    });
+});
+</script>
+<audio autoplay loop style="display: none;">
+  <source src="https://www.youtube.com/watch?v=2takcwjWcgo" type="audio/mp4">
+</audio>
+<div class="relative flex flex-col w-full min-h-screen overflow-x-hidden stardust-bg">
+<div class="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+<div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+<div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+<div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+</div>
+<div class="absolute inset-0 pointer-events-none">
+<div class="blurred-heart" style="top: 15%; left: 6%;">❤</div>
+<div class="blurred-heart" style="top: 35%; right: 9%;">❤</div>
+<div class="blurred-heart" style="bottom: 25%; left: 8%;">❤</div>
+<div class="blurred-heart" style="top: 55%; right: 7%;">❤</div>
+<div class="blurred-heart" style="bottom: 5%; left: 15%;">❤</div>
+</div>
+<nav class="relative z-30 flex items-center justify-between px-6 py-8 md:px-12">
+<button class="flex items-center gap-2 transition-colors group text-white/70 hover:text-white" onclick="window.location.href='val1.html'">
+<span class="text-xl material-symbols-outlined">arrow_back</span>
+<span class="text-sm font-medium tracking-widest uppercase">Back to Letter</span>
+</button>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary fill-1">favorite</span>
+<span class="font-serif text-lg italic">For Nosa</span>
+</div>
+<div class="w-24"></div> 
+</nav>
+<header class="relative z-20 flex flex-col items-center px-4 pt-8 pb-16">
+<h1 class="text-6xl text-center text-white font-script md:text-8xl lg:text-9xl luxury-text">
+            Our Beautiful Journey
+        </h1>
+<div class="w-24 h-[1px] bg-primary mt-8 opacity-50"></div>
+</header>
+<main class="relative z-20 px-6 pb-24 mx-auto max-w-7xl">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div class="gallery-frame aspect-[4/5] rounded-xl gold-glow group">
+<img alt="Special memory" class="object-cover w-full h-full transition-transform duration-700" src="IMG-20260123-WA0027.jpg"/>
+<div class="absolute inset-0 flex items-end p-8 transition-all duration-500 translate-y-4 opacity-0 caption-overlay bg-gradient-to-t from-black/80 via-transparent to-transparent">
+<p class="font-serif text-xl italic text-white">"A moment we'll cherish forever."</p>
+</div>
+</div>
+<div class="gallery-frame aspect-[4/5] rounded-xl gold-glow group">
+<img alt="My lady" class="object-cover w-full h-full transition-transform duration-700" src="IMG-20260112-WA0002.jpg"/>
+<div class="absolute inset-0 flex items-end p-8 transition-all duration-500 translate-y-4 opacity-0 caption-overlay bg-gradient-to-t from-black/80 via-transparent to-transparent">
+<p class="font-serif text-xl italic text-white">"The one who makes everything beautiful."</p>
+</div>
+</div>
+<div class="gallery-frame aspect-[4/5] rounded-xl gold-glow group">
+<img alt="My queen" class="object-cover w-full h-full transition-transform duration-700" src="IMG-20251221-WA0010.jpg"/>
+<div class="absolute inset-0 flex items-end p-8 transition-all duration-500 translate-y-4 opacity-0 caption-overlay bg-gradient-to-t from-black/80 via-transparent to-transparent">
+<p class="font-serif text-xl italic text-white">"My queen, my everything."</p>
+</div>
+</div>
+<div class="gallery-frame aspect-[4/5] rounded-xl gold-glow group">
+<img alt="Your beautiful smile" class="object-cover w-full h-full transition-transform duration-700" src="WhatsApp Image 2026-01-24 at 1.09.11 PM(3).jpeg"/>
+<div class="absolute inset-0 flex items-end p-8 transition-all duration-500 translate-y-4 opacity-0 caption-overlay bg-gradient-to-t from-black/80 via-transparent to-transparent">
+<p class="font-serif text-xl italic text-white">"Pure joy and happiness."</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 z-30 w-full h-32 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-t from-black to-transparent opacity-60"></div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-full pointer-events-none">
+</div>
+</div>
+
+</body></html>
