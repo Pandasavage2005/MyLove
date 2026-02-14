@@ -1,0 +1,43 @@
+/* Heart shape using CSS */
+.heart {
+    position: fixed;
+    top: -10vh;
+    width: 20px;
+    height: 20px;
+    background: rgba(238, 43, 124, 0.6);
+    transform: rotate(45deg);
+    animation: fall linear forwards;
+    z-index: 100; /* Ensure visibility */
+    pointer-events: none; /* Allow clicks through */
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(238, 43, 124, 0.6);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(45deg) scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(45deg) scale(1.2);
+        opacity: 0;
+    }
+}
